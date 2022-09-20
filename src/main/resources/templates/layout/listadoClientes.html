@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace='layout/plantilla :: head' />
+
+    <body>
+
+        <section th:fragment="listadoClientes" id="clientes">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 style="text-align: center">[[#{persona.lista}]]</h4>
+                            </div>
+                            <div th:if="${personas != null and !personas.empty}">
+                                <table class="table table-striped table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{persona.nombre}"></th>
+                                            <th th:text="#{persona.email}"></th>
+                                            <th th:text="#{persona.telefono}"></th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{persona.saldo}"></th>
+                                            <th> </th>
+                                            <th> </th>
+                                            <th> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="persona, contador : ${personas}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${persona.nombre}]] [[${persona.apellido}]]</td>
+                                            <td>[[${persona.email}]]</td>
+                                            <td>[[${persona.telefono}]]</td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">[[${new java.text.DecimalFormat('$#,##0.00').format(persona.saldo)}]]</td>
+                                            <td>
+                                                <a href="#" class="btn btn-info" th:href="@{/detalle/} + ${persona.idPersona}">
+                                                    <i class="fa-solid fa-circle-info"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${persona.idPersona}" class="btn btn-success"/>
+                                                <i class="fa-solid fa-pen-to-square" sec:authorize="hasRole('ROLE_ADMIN')"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idPersona=${persona.idPersona})}" class="btn btn-danger"/>
+                                                <i class="fa-solid fa-trash" sec:authorize="hasRole('ROLE_ADMIN')"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:if="${personas == null or personas.empty}">
+                                <span th:text="#{persona.lista-vacia}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </section>
+
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace='layout/plantilla :: head' />
+
+    <body>
+
+        <section th:fragment="saldoClientes" id="saldo">
+            <div class="container mb-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card text-center bg-secondary bg-gradient text-white mt-3">
+                            <h4><i class="fa-solid fa-users"></i></h4>
+                            <h4 class="display-5">
+                                [[#{persona.clientes-total}]]
+                            </h4>
+                            <h4 class="display-4">
+                                [[${totalClientes}]]
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center bg-info bg-gradient text-white mb-1 mt-3">
+                            <h4><i class="fa-solid fa-sack-dollar"></i></h4>
+                            <h4 class="display-5">
+                                [[#{persona.saldo-total}]]
+                            </h4>
+                            <h4 class="display-4">
+                                [[${new java.text.DecimalFormat('$#,##0.00').format(saldoTotal)}]]
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center bg-success bg-gradient text-white mb-1 mt-3">
+                            <h4><i class="fa-solid fa-user-plus"></i></h4>
+                            <h4 class="display-5">
+                                [[${personaSaldoMaxNombre}]] [[${personaSaldoMaxApellido}]]
+                            </h4>
+                            <h4 class="display-4">
+                                [[${new java.text.DecimalFormat('$#,##0.00').format(saldoMax)}]]
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center bg-danger bg-gradient text-white mb-1 mt-3">
+                            <h4><i class="fa-solid fa-user-minus"></i></h4>
+                            <h4 class="display-5">
+                                [[${personaSaldoMinNombre}]] [[${personaSaldoMinApellido}]]
+                            </h4>
+                            <h4 class="display-4">
+                                [[${new java.text.DecimalFormat('$#,##0.00').format(saldoMin)}]]
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>

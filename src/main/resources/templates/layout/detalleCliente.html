@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace='layout/plantilla :: head' />
+
+    <body>
+        <section th:fragment="detalleCliente">
+            <form th:object="${persona}">
+                <input type="hidden" name="idPersona" th:field="*{idPersona}"/>
+                <section th:replace="layout/botonesDetalle :: botonesDetalle"></section>
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card bg-dark text-white">
+                                    <div class="card-header">
+                                        <h4>[[#{persona.cliente}]]: [[*{nombre}]] [[*{apellido}]] | [[#{persona.codigo-interno}]]: [[*{idPersona}]]</h4>
+                                    </div>
+                                    <div class="card-body bg-secondary">
+                                        <div class="form-group">
+                                            <label for="nombre" th:text="#{persona.nombre}"></label>
+                                            <span  class="form-control" id="nombre">[[*{nombre}]]</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellido" th:text="#{persona.apellido}"></label>
+                                            <span  class="form-control" id="apellido">[[*{apellido}]]</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" th:text="#{persona.email}"></label>
+                                            <span  class="form-control" id="email">[[*{email}]]</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telefono" th:text="#{persona.telefono}"></label>
+                                            <span  class="form-control" id="telefono">[[*{telefono}]]</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="direccion" th:text="#{persona.direccion}"></label>
+                                            <span  class="form-control" id="direccion">[[*{direccion}]]</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="localidad" th:text="#{persona.localidad}"></label>
+                                            <span  class="form-control" id="localidad">[[*{localidad}]]</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="provincia" th:text="#{persona.provincia}"></label>
+                                            <span  class="form-control" id="provincia">[[*{provincia}]]</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pais" th:text="#{persona.pais}"></label>
+                                            <span  class="form-control" id="pais">[[*{pais}]]</span>
+                                        </div>
+                                        <div class="form-group" sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <label for="saldo" th:text="#{persona.saldo}"></label>
+                                            <span  class="form-control" id="saldo">[[${new java.text.DecimalFormat('$#,##0.00').format(persona.saldo)}]]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section th:replace="layout/botonesDetalle :: botonesDetalle"></section>
+            </form>
+        </section>
+    </body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:fragment="head">
+        <title>Control Clientes</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href='@{/webjars/bootstrap/css/bootstrap.min.css}' />
+        <link rel="stylesheet" th:href='@{/webjars/font-awesome/css/all.css}' />
+        <script th:src='@{/webjars/jquery/jquery.min.js}' ></script>
+        <script th:src='@{/webjars/popper.js/umd/popper.min.js}' ></script>
+        <script th:src='@{/webjars/bootstrap/js/bootstrap.min.js}'></script>
+    </head>
+
+    <body>
+        <header th:fragment="header">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand"><i class="fas fa-home"></i> [[#{plantilla.titulo}]]</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3">
+                                <a class="nav-link">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{barra.bienvenido}">Bienvenido:</span>
+                                    <span sec:authentication="name">Usuario</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="POST" th:action="@{/logout}">
+                                    <a href="#" onclick="this.parentNode.submit()" class="nav-link">
+                                        <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i> [[#{barra.salir}]]
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <footer th:fragment="footer" class="bg-dark mt-5 p-5 text-white">
+            <div class="container">
+                <div class="column">
+                    <h3 class="lead text-center">
+                        [
+                        <a th:href="@{/(lang=es)}">ES</a> 
+                        <i class="fa-sharp fa-solid fa-globe"></i>
+                        <a th:href="@{/(lang=en)}">EN</a> 
+                        ]
+                        <a href="https://github.com/dmnsi" target="_blank"><i class="fa-brands fa-github"></i></a></span>
+                    </h3>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>
