@@ -1,4 +1,4 @@
-package mx.com.gm.web;
+package com.dmn.web;
 
 import java.util.Locale;
 import org.springframework.context.annotation.Bean;

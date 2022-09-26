@@ -1,10 +1,10 @@
-package mx.com.gm.web;
+package com.dmn.web;
 
 import java.util.*;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import mx.com.gm.domain.Persona;
-import mx.com.gm.servicio.PersonaService;
+import com.dmn.domain.Persona;
+import com.dmn.servicio.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -53,8 +53,6 @@ public class ControladorInicio {
                 personaSaldoMax = p;
             }
         }
-
-        System.out.println(saldos);
 
         model.addAttribute("personaSaldoMinNombre", personaSaldoMin.getNombre());
         model.addAttribute("personaSaldoMinApellido", personaSaldoMin.getApellido());

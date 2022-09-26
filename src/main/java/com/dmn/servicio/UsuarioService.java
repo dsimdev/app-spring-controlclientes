@@ -1,10 +1,10 @@
-package mx.com.gm.servicio;
+package com.dmn.servicio;
 
 import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
-import mx.com.gm.dao.UsuarioDao;
-import mx.com.gm.domain.Rol;
-import mx.com.gm.domain.Usuario;
+import com.dmn.dao.UsuarioDao;
+import com.dmn.domain.Rol;
+import com.dmn.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

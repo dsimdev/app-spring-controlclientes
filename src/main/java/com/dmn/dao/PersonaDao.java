@@ -1,6 +1,6 @@
-package mx.com.gm.dao;
+package com.dmn.dao;
 
-import mx.com.gm.domain.Persona;
+import com.dmn.domain.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PersonaDao extends JpaRepository<Persona, Long> {

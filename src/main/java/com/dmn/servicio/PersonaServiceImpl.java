@@ -1,8 +1,8 @@
-package mx.com.gm.servicio;
+package com.dmn.servicio;
 
 import java.util.List;
-import mx.com.gm.dao.PersonaDao;
-import mx.com.gm.domain.Persona;
+import com.dmn.dao.PersonaDao;
+import com.dmn.domain.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

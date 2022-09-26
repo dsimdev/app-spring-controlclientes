@@ -8,7 +8,7 @@
         <version>2.7.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>mx.com.gm</groupId>
+    <groupId>com.dmn</groupId>
     <artifactId>ControlClientes</artifactId>
     <version>1.0</version>
     <name>ControlClientes</name>
