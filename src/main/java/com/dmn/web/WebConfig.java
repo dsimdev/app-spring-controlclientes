@@ -15,14 +15,14 @@ public class WebConfig implements WebMvcConfigurer{
     
     @Bean
     public LocaleResolver localeResolver(){
-        var slr = new SessionLocaleResolver();
+        SessionLocaleResolver slr = new SessionLocaleResolver();
         slr.setDefaultLocale(new Locale("es"));
         return slr;
     }
     
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor(){
-        var lci = new LocaleChangeInterceptor();
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
         lci.setParamName("lang");
         return lci;
     }

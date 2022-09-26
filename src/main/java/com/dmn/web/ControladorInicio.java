@@ -23,20 +23,20 @@ public class ControladorInicio {
 
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User user) {
-        var personas = personaService.listarPersonas();
+        List<Persona> personas = personaService.listarPersonas();
         log.info("ejecutando el controlador Spring MVC");
         log.info("usuario que hizo login:" + user);
         model.addAttribute("personas", personas);
 
-        var saldoTotal = 0D;
+        double saldoTotal = 0D;
 
         ArrayList<Float> saldos = new ArrayList<>();
         float saldoMax = 0;
         float saldoMin = 0;
-        var personaSaldoMax = new Persona();
-        var personaSaldoMin = new Persona();
+        Persona personaSaldoMax = new Persona();
+        Persona personaSaldoMin = new Persona();
 
-        for (var p : personas) {
+        for (Persona p : personas) {
             saldoTotal += p.getSaldo();
             saldos.add(p.getSaldo());
         }
@@ -45,7 +45,7 @@ public class ControladorInicio {
         saldoMin = saldos.get(0);
         saldoMax = saldos.get(saldos.size() - 1);
 
-        for (var p : personas) {
+        for (Persona p : personas) {
             if (p.getSaldo() == saldoMin) {
                 personaSaldoMin = p;
             }
