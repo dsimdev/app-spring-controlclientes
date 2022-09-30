@@ -24,9 +24,9 @@
                                             <th th:text="#{persona.email}"></th>
                                             <th th:text="#{persona.telefono}"></th>
                                             <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{persona.saldo}"></th>
-                                            <th> </th>
-                                            <th sec:authorize="hasRole('ROLE_ADMIN')"> </th>
-                                            <th sec:authorize="hasRole('ROLE_ADMIN')"> </th>
+                                            <th>Info</th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.editar}]]</th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,14 +41,14 @@
                                                     <i class="fa-solid fa-circle-info"></i>
                                                 </a>
                                             </td>
-                                            <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${persona.idPersona}" class="btn btn-success"/>
-                                                <i class="fa-solid fa-pen-to-square" sec:authorize="hasRole('ROLE_ADMIN')"></i>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <a th:href="@{/editar/} + ${persona.idPersona}" class="btn btn-success"/>
+                                                <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                             </td>
-                                            <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idPersona=${persona.idPersona})}" class="btn btn-danger"/>
-                                                <i class="fa-solid fa-trash" sec:authorize="hasRole('ROLE_ADMIN')"></i>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <a th:href="@{/eliminar(idPersona=${persona.idPersona})}" class="btn btn-danger"/>
+                                                <i class="fa-solid fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>
