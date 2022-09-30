@@ -27,13 +27,13 @@
                                 <form method="POST" th:action="@{/login}">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span for="username" class="input-group-text" id="basic-addon1">[[#{login.username}]]:</span>
+                                            <span for="username" class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
                                         </div>
                                         <input name="username" id="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span for="password" class="input-group-text" id="basic-addon2">[[#{login.password}]]:</span>
+                                            <span for="password" class="input-group-text" id="basic-addon2"><i class="fa-solid fa-lock"></i></span>
                                         </div>
                                         <input name="password" id="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
                                     </div>
