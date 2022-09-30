@@ -7,10 +7,10 @@ public class EncriptarPassword {
         
         String password = "123";
         System.out.println("password: " + password);
-        System.out.println("password encriptado:" + encriptarPassword(password));
+        System.out.println("password encriptado:" + encryptPassword(password));
     }
     
-    public static String encriptarPassword(String password){
+    public static String encryptPassword(String password){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder.encode(password);
     }
